@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo 1 — Marinescu & Asociații</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A55A;
+      --gold-dim: rgba(201,165,90,0.4);
+      --dark: #0E0D0C;
+      --dark-nav: #131210;
+      --off-white: #F0EBE0;
+      --gray: #6B6860;
+      --gray-light: #9A9590;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--dark);
+      color: var(--off-white);
+      overflow: hidden;
+    }
+
+    /* ── TOPBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 2.5rem;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 0.5rem; }
+
+    .search-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--off-white); opacity: 0.7;
+      padding: 0.3rem;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+    .search-btn:hover { opacity: 1; }
+
+    .logo {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .logo-monogram {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .logo-name {
+      display: block;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(240,235,224,0.6);
+      margin-top: 0.2rem;
+    }
+
+    .menu-btn {
+      background: none; border: none; cursor: pointer;
+      display: flex; flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      padding: 0.3rem;
+    }
+
+    .menu-btn span {
+      display: block;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width 0.2s;
+    }
+    .menu-btn span:nth-child(1) { width: 22px; }
+    .menu-btn span:nth-child(2) { width: 16px; }
+    .menu-btn span:nth-child(3) { width: 22px; }
+
+    .menu-label {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.3rem;
+    }
+
+    .menu-btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 45% 55%;
+    }
+
+    /* Left: abstract wave image */
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* SVG wave lines to simulate the K&E abstract */
+    .hero-image svg {
+      width: 100%; height: 100%;
+      position: absolute; inset: 0;
+    }
+
+    /* Right: content panel */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 5rem 3.5rem;
+      background: var(--dark);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+      max-width: 420px;
+    }
+
+    /* Bottom carousel bar */
+    .carousel-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 2.5rem;
+      z-index: 50;
+    }
+
+    .carousel-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .carousel-arrow {
+      background: none; border: none; cursor: pointer;
+      color: var(--gold); font-size: 1.1rem;
+    }
+
+    .dot {
+      width: 36px; height: 2px;
+      background: var(--gray);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dot.active { background: var(--off-white); }
+
+    .more-news {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .more-news:hover { color: var(--off-white); }
+
+    /* ── MENU OVERLAY ── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: #EDEAE5;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      overflow: hidden;
+    }
+
+    .overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Topographic line background */
+    .overlay-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .overlay-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 2.5rem;
+    }
+
+    .overlay-logo {
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .overlay-logo .logo-monogram { color: var(--gold); font-size: 1.4rem; }
+    .overlay-logo .logo-name { color: #888; margin-top: 0.2rem; }
+
+    .close-btn {
+      background: none; border: none; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    }
+
+    .close-btn svg {
+      stroke: #8B1A1A; stroke-width: 1.5;
+    }
+
+    .close-label {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #8B1A1A;
+    }
+
+    .overlay-nav {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 2rem 3.5rem;
+      gap: 0.4rem;
+    }
+
+    .overlay-nav a {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      text-decoration: none;
+      color: #1A1A1A;
+      line-height: 1.3;
+      transition: color 0.2s;
+      font-family: 'Georgia', serif;
+    }
+
+    .overlay-nav a.accent { color: #1A2EC0; }
+    .overlay-nav a.accent:hover { color: #0D1F8A; }
+    .overlay-nav a:not(.accent):hover { color: var(--gold); }
+
+    .overlay-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+    }
+
+    .socials { display: flex; gap: 0.6rem; }
+
+    .social-icon {
+      width: 36px; height: 36px;
+      border: 1px solid #ccc;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #555;
+      font-family: sans-serif; font-size: 0.7rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+
+    .overlay-legal {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      color: #999;
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+
+    .overlay-legal a { color: #999; text-decoration: none; }
+    .overlay-legal a:hover { color: var(--gold); }
+
+    /* ── SECTION BELOW HERO ── */
+    .section-featured {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 3rem;
+    }
+
+    /* Keep body scrollable when overlay is closed */
+    body.no-scroll { overflow: hidden; }
+    body.scrollable { overflow-y: auto; }
+
+    /* back to demo link */
+    .back-link {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 2.5rem;
+      z-index: 300;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); border-color: var(--gold); }
+  </style>
+</head>
+<body class="no-scroll">
+
+  <!-- MENU OVERLAY -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Meniu principal">
+    <svg class="overlay-bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="1">
+        <!-- Topo lines generated as gentle waves -->
+        <path d="M-100,150 C200,120 400,180 700,140 S1100,100 1540,160"/>
+        <path d="M-100,200 C180,165 420,235 720,190 S1120,145 1540,210"/>
+        <path d="M-100,260 C200,225 380,290 680,250 S1080,200 1540,270"/>
+        <path d="M-100,320 C220,285 400,350 700,305 S1100,255 1540,325"/>
+        <path d="M-100,385 C200,345 420,415 720,370 S1120,315 1540,390"/>
+        <path d="M-100,450 C200,410 380,480 680,430 S1080,380 1540,455"/>
+        <path d="M-100,520 C220,475 400,550 700,500 S1100,445 1540,525"/>
+        <path d="M-100,590 C200,545 420,620 720,565 S1120,510 1540,595"/>
+        <path d="M-100,660 C200,615 380,690 680,635 S1080,580 1540,665"/>
+        <path d="M-100,730 C220,682 400,760 700,700 S1100,645 1540,735"/>
+        <path d="M-100,800 C200,750 420,830 720,770 S1120,710 1540,805"/>
+      </g>
+    </svg>
+
+    <div class="overlay-top">
+      <button class="close-btn" id="closeBtn" aria-label="Închide meniu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <line x1="2" y1="2" x2="20" y2="20"/>
+          <line x1="20" y1="2" x2="2" y2="20"/>
+        </svg>
+        <span class="close-label">Meniu</span>
+      </button>
+
+      <a href="/demo/1" class="overlay-logo">
+        <span class="logo-monogram">M &amp; A</span>
+        <span class="logo-name">Marinescu &amp; Asociații</span>
+      </a>
+
+      <div style="width:60px"></div><!-- balance spacer -->
+    </div>
+
+    <nav class="overlay-nav">
+      <a href="#avocati" class="accent" onclick="closeOverlay()">Avocați</a>
+      <a href="#servicii" class="accent" onclick="closeOverlay()">Servicii</a>
+      <a href="#angajament" class="accent" onclick="closeOverlay()">Angajament Social</a>
+      <a href="#cariere" class="accent" onclick="closeOverlay()">Cariere</a>
+      <a href="#noutati" onclick="closeOverlay()">Noutăți &amp; Articole</a>
+      <a href="#locatii" onclick="closeOverlay()">Locații</a>
+      <a href="#despre" onclick="closeOverlay()">Despre Noi</a>
+    </nav>
+
+    <footer class="overlay-footer">
+      <div class="socials">
+        <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+      </div>
+      <div class="overlay-legal">
+        <a href="#">Absolvenți</a> / <a href="#">Politică &amp; Disclaimer</a> / <a href="#">Publicitate Juridică</a>
+        <br />&copy; 2026 Societatea Civilă de Avocatură Marinescu &amp; Asociații
+      </div>
+    </footer>
+  </div>
+
+  <!-- TOPBAR -->
+  <nav>
+    <div class="nav-left">
+      <button class="search-btn" aria-label="Căutare">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="7.5" cy="7.5" r="5.5"/>
+          <line x1="11.5" y1="11.5" x2="16" y2="16"/>
+        </svg>
+      </button>
+    </div>
+
+    <a href="/demo/1" class="logo">
+      <span class="logo-monogram">M &amp; A</span>
+      <span class="logo-name">Marinescu &amp; Asociații</span>
+    </a>
+
+    <button class="menu-btn-wrap" id="menuBtn" aria-label="Deschide meniu" aria-expanded="false">
+      <div class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="menu-label">Meniu</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- Left abstract wave panel -->
+    <div class="hero-image">
+      <svg viewBox="0 0 640 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="waveBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1A3040"/>
+            <stop offset="50%" stop-color="#0E2030"/>
+            <stop offset="100%" stop-color="#060E14"/>
+          </linearGradient>
+          <linearGradient id="waveShine" x1="20%" y1="0%" x2="80%" y2="100%">
+            <stop offset="0%" stop-color="#A8D8F0" stop-opacity="0.6"/>
+            <stop offset="40%" stop-color="#7AB8D8" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#3A6080" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="900" fill="url(#waveBg)"/>
+        <!-- Concentric ribbon waves imitating K&E hero -->
+        <g fill="none" stroke-width="0.8">
+          <path d="M320,900 C300,750 260,600 320,450 S400,250 320,100 S200,-50 100,50" stroke="rgba(160,210,240,0.18)"/>
+          <path d="M320,900 C295,745 250,590 315,440 S400,235 318,88 S193,-60 93,40" stroke="rgba(160,210,240,0.16)"/>
+          <path d="M320,900 C288,738 242,578 310,428 S402,220 316,76 S186,-70 86,30" stroke="rgba(160,210,240,0.14)"/>
+          <path d="M320,900 C280,730 234,566 304,416 S404,204 314,64 S178,-80 78,20" stroke="rgba(160,210,240,0.12)"/>
+          <path d="M320,900 C272,722 226,554 298,404 S406,188 312,52 S171,-90 71,10" stroke="rgba(160,210,240,0.10)"/>
+          <path d="M320,900 C264,714 218,542 292,392 S408,172 310,40 S164,-100 64,0" stroke="rgba(160,210,240,0.09)"/>
+          <path d="M320,900 C256,706 210,530 286,380 S410,156 308,28 S157,-110 57,-10" stroke="rgba(160,210,240,0.08)"/>
+          <path d="M320,900 C248,698 202,518 280,368 S412,140 306,16 S150,-120 50,-20" stroke="rgba(160,210,240,0.07)"/>
+          <path d="M320,900 C240,690 194,506 274,356 S414,124 304,4 S143,-130 43,-30" stroke="rgba(160,210,240,0.06)"/>
+          <path d="M320,900 C232,682 186,494 268,344 S416,108 302,-8 S136,-140 36,-40" stroke="rgba(160,210,240,0.05)"/>
+          <!-- Bright highlight ribbons -->
+          <path d="M320,900 C305,755 272,608 328,460 S398,262 326,112" stroke="rgba(190,230,250,0.35)"/>
+          <path d="M320,900 C308,758 278,614 333,466 S396,268 329,118" stroke="rgba(190,230,250,0.28)"/>
+          <path d="M320,900 C311,761 284,620 338,472 S394,274 332,124" stroke="rgba(190,230,250,0.20)"/>
+          <path d="M320,900 C314,764 290,626 343,478 S392,280 335,130" stroke="rgba(190,230,250,0.14)"/>
+        </g>
+        <!-- Subtle gold accent line -->
+        <path d="M320,900 C300,750 265,598 322,448 S401,248 322,98" fill="none" stroke="rgba(201,165,90,0.25)" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <!-- Right content -->
+    <div class="hero-content">
+      <p class="hero-eyebrow">Practică de Excelență</p>
+      <h1 class="hero-title">Soluții Strategice de Litigii Comerciale</h1>
+    </div>
+  </div>
+
+  <!-- CAROUSEL BAR -->
+  <div class="carousel-bar">
+    <button class="carousel-arrow" aria-label="Anterior">&#8249;</button>
+    <div class="carousel-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <button class="carousel-arrow" aria-label="Următor">&#8250;</button>
+    <a href="#noutati" class="more-news">+ Mai Multe Noutăți</a>
+  </div>
+
+  <!-- BACK LINK -->
+  <a href="/demo" class="back-link">← Înapoi la selectare</a>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openOverlay() {
+      overlay.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.remove('no-scroll');
+    }
+
+    function closeOverlay() {
+      overlay.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    menuBtn.addEventListener('click', openOverlay);
+    closeBtn.addEventListener('click', closeOverlay);
+
+    overlay.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeOverlay();
+    });
+
+    // Carousel dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
