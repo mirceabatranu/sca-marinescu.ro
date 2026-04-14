@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHome from '../../components/SiteHome.astro';
+import { companyProfile, siteContent } from '../../data/site';
+
+const content = siteContent.en;
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LegalService',
+    name: companyProfile.name,
+    legalName: companyProfile.legalName,
+    url: `${companyProfile.siteUrl}/en/`,
+    image: `${companyProfile.siteUrl}/favicon.svg`,
+    email: companyProfile.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: companyProfile.city,
+      addressCountry: companyProfile.countryCode,
+    },
+    areaServed: ['Romania', 'European Union'],
+    availableLanguage: ['English', 'Romanian'],
+    knowsAbout: content.practiceAreas.map((item) => item.title),
+    description: content.description,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={content.metaTitle}
+  description={content.description}
+  lang={content.lang}
+  locale={content.locale}
+  path="/en/"
+  alternates={[
+    { href: '/', hreflang: 'ro-RO' },
+    { href: '/en/', hreflang: 'en' },
+    { href: '/', hreflang: 'x-default' },
+  ]}
+  structuredData={structuredData}
+>
+  <SiteHome content={content} />
+</BaseLayout>

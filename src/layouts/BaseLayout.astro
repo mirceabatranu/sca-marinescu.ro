@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+
+interface AlternateLink {
+  href: string;
+  hreflang: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  locale?: string;
+  path?: string;
+  alternates?: AlternateLink[];
+  structuredData?: unknown[];
+}
+
+const {
+  title,
+  description,
+  lang = 'ro',
+  locale = 'ro-RO',
+  path = '/',
+  alternates = [],
+  structuredData = [],
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL('https://sca-marinescu.ro');
+const canonicalUrl = new URL(path, siteUrl).toString();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#10281f" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="SCA Marinescu" />
+    <meta property="og:locale" content={locale} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    {alternates.map((alternate) => (
+      <link
+        rel="alternate"
+        hreflang={alternate.hreflang}
+        href={new URL(alternate.href, siteUrl).toString()}
+      />
+    ))}
+    {structuredData.map((entry) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(entry)} />
+    ))}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

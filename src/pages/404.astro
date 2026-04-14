@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found | SCA Marinescu"
+  description="The requested page could not be found on sca-marinescu.ro."
+  lang="en"
+  locale="en_US"
+  path="/404"
+>
+  <main class="error-wrap">
+    <section class="shell error-card">
+      <p class="eyebrow">404</p>
+      <h1>Requested page not found.</h1>
+      <p>
+        The page may have moved, or the URL may be incomplete. Return to the Romanian
+        homepage or the English version below.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/">Romanian homepage</a>
+        <a class="button button-secondary" href="/en/">English homepage</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
