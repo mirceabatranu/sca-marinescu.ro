@@ -118,6 +118,25 @@
     }
     .cta-btn:hover { background: var(--teal-mid) !important; }
 
+    .template-switch {
+      border: 1px solid rgba(23,54,40,0.25);
+      text-decoration: none;
+      color: var(--teal);
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.8rem;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .template-switch:hover {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+
     /* Mobile hamburger */
     .hamburger {
       display: none;
@@ -132,6 +151,7 @@
     @media (max-width: 768px) {
       .header-nav { display: none; }
       .hamburger { display: flex; }
+      .template-switch { font-size: 0.6rem; padding: 0.5rem 0.65rem; }
     }
 
     /* ── HERO SECTION ── */
@@ -467,6 +487,8 @@
         <span></span><span></span><span></span>
       </button>
     </nav>
+
+    <a href="/demo/1" class="template-switch" aria-label="Comută la Template 1">Template 1</a>
   </header>
 
   <!-- HERO -->

@@ -111,6 +111,31 @@
       border: none;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .template-switch {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gold);
+      border: 1px solid rgba(201,165,90,0.35);
+      padding: 0.45rem 0.7rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .template-switch:hover {
+      color: var(--off-white);
+      border-color: var(--gold);
+      background: rgba(201,165,90,0.12);
+    }
+
     /* ── HERO ── */
     .hero {
       height: 100vh;
@@ -423,14 +448,18 @@
       <span class="logo-name">Marinescu &amp; Asociații</span>
     </a>
 
-    <button class="menu-btn-wrap" id="menuBtn" aria-label="Deschide meniu" aria-expanded="false">
-      <div class="menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <span class="menu-label">Meniu</span>
-    </button>
+    <div class="nav-right">
+      <a href="/demo/2" class="template-switch" aria-label="Comută la Template 2">Template 2</a>
+
+      <button class="menu-btn-wrap" id="menuBtn" aria-label="Deschide meniu" aria-expanded="false">
+        <div class="menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="menu-label">Meniu</span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
