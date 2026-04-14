@@ -32,9 +32,9 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
       padding: 1.4rem 2.5rem;
       min-height: 86px;
       background: var(--dark-nav);
@@ -53,18 +53,19 @@
     .search-btn:hover { opacity: 1; }
 
     .logo {
-      position: absolute;
-      left: 50%; transform: translateX(-50%);
+      position: relative;
+      justify-self: center;
       text-align: center;
       text-decoration: none;
       background: var(--dark-nav);
       border: 1px solid rgba(201,165,90,0.28);
       padding: 0.38rem 0.62rem;
+      max-width: min(78vw, 420px);
     }
 
     .logo-image {
       display: block;
-      width: min(300px, 42vw);
+      width: 100%;
       height: auto;
     }
 
@@ -453,7 +454,6 @@
 
       .logo {
         position: static;
-        transform: none;
         margin-right: auto;
       }
 
