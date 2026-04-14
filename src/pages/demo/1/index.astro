@@ -759,41 +759,16 @@
       if (e.key === 'Escape') closeOverlay();
     });
 
-    // Carousel content
-    const heroEyebrow = document.getElementById('heroEyebrow');
-    const heroTitle = document.getElementById('heroTitle');
-    const heroSummary = document.getElementById('heroSummary');
+    // Carousel controls
     const tabButtons = document.querySelectorAll('.carousel-tab');
     const prevSlide = document.getElementById('prevSlide');
     const nextSlide = document.getElementById('nextSlide');
 
-    const slides = [
-      {
-        eyebrow: 'Servicii',
-        title: 'Soluții Strategice de Litigii Comerciale',
-        summary: 'Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.'
-      },
-      {
-        eyebrow: 'Clients',
-        title: 'Companii, Investitori, Grupuri Internaționale',
-        summary: 'Reprezentăm antreprenori locali, companii medii și mari, investitori și stakeholderi internaționali care au nevoie de raportare clară și decizii rapide.'
-      },
-      {
-        eyebrow: 'Litigii Comerciale',
-        title: 'Coordonare Completă în Dosare cu Miză Ridicată',
-        summary: 'Gestionăm dispute comerciale complexe de la analiză și probatoriu până la tactica de ședință, negocieri și executare, cu focus pe rezultat comercial.'
-      }
-    ];
-
     let activeIndex = 0;
 
+    /** @param {number} index */
     function renderSlide(index) {
       activeIndex = index;
-      const slide = slides[index];
-      heroEyebrow.textContent = slide.eyebrow;
-      heroTitle.textContent = slide.title;
-      heroSummary.textContent = slide.summary;
-
       tabButtons.forEach((btn, btnIndex) => {
         const isActive = btnIndex === index;
         btn.classList.toggle('active', isActive);
@@ -806,12 +781,12 @@
     });
 
     prevSlide.addEventListener('click', () => {
-      const newIndex = (activeIndex - 1 + slides.length) % slides.length;
+      const newIndex = (activeIndex - 1 + tabButtons.length) % tabButtons.length;
       renderSlide(newIndex);
     });
 
     nextSlide.addEventListener('click', () => {
-      const newIndex = (activeIndex + 1) % slides.length;
+      const newIndex = (activeIndex + 1) % tabButtons.length;
       renderSlide(newIndex);
     });
 
