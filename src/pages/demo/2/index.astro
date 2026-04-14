@@ -52,6 +52,12 @@
       flex-shrink: 0;
     }
 
+    .header-logo img {
+      width: min(290px, 34vw);
+      height: auto;
+      display: block;
+    }
+
     .logo-mark {
       width: 38px; height: 38px;
       background: var(--teal);
@@ -152,6 +158,7 @@
       .header-nav { display: none; }
       .hamburger { display: flex; }
       .template-switch { font-size: 0.6rem; padding: 0.5rem 0.65rem; }
+      .header-logo img { width: min(220px, 56vw); }
     }
 
     /* ── HERO SECTION ── */
@@ -465,11 +472,7 @@
   <!-- HEADER -->
   <header>
     <a href="/demo/2" class="header-logo">
-      <div class="logo-mark"><span>M</span></div>
-      <div class="logo-text-wrap">
-        <span class="logo-text-main">Marinescu &amp; Asociații</span>
-        <span class="logo-text-sub">Attorneys at Law</span>
-      </div>
+      <img src="/company-logo.svg" alt="Marinescu &amp; Asociații" />
     </a>
 
     <nav>
