@@ -36,6 +36,9 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.4rem 2.5rem;
+      min-height: 86px;
+      background: var(--dark-nav);
+      border-bottom: 1px solid rgba(201,165,90,0.12);
     }
 
     .nav-left { display: flex; align-items: center; gap: 0.5rem; }
@@ -54,9 +57,9 @@
       left: 50%; transform: translateX(-50%);
       text-align: center;
       text-decoration: none;
-      background: rgba(245,240,232,0.96);
-      border: 1px solid rgba(201,165,90,0.35);
-      padding: 0.4rem 0.7rem;
+      background: var(--dark-nav);
+      border: 1px solid rgba(201,165,90,0.28);
+      padding: 0.38rem 0.62rem;
     }
 
     .logo-image {
@@ -147,7 +150,8 @@
 
     /* ── HERO ── */
     .hero {
-      height: 100vh;
+      height: calc(100vh - 86px);
+      margin-top: 86px;
       display: grid;
       grid-template-columns: 45% 55%;
     }
@@ -379,6 +383,134 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .back-link:hover { color: var(--gold); border-color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      nav {
+        padding: 1rem 1.2rem;
+        min-height: 74px;
+      }
+
+      .logo-image { width: min(250px, 46vw); }
+
+      .hero {
+        margin-top: 74px;
+        height: calc(100vh - 74px);
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image { min-height: 38vh; }
+
+      .hero-content {
+        padding: 2rem 1.4rem 2.5rem;
+        justify-content: flex-start;
+      }
+
+      .hero-title { max-width: none; }
+
+      .carousel-bar {
+        position: static;
+        padding: 1rem 1.2rem 1.4rem;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+        background: var(--dark);
+      }
+
+      .back-link {
+        position: static;
+        display: inline-block;
+        margin: 0 1.2rem 1.2rem;
+      }
+
+      .overlay-top,
+      .overlay-nav,
+      .overlay-footer {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+
+      .overlay-nav {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 1rem;
+        gap: 0.25rem;
+      }
+
+      .overlay-nav a {
+        font-size: clamp(1.35rem, 6vw, 2.2rem);
+      }
+
+      .overlay-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .overlay-legal { text-align: left; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-left { display: none; }
+
+      .logo {
+        position: static;
+        transform: none;
+        margin-right: auto;
+      }
+
+      .logo-image { width: min(200px, 52vw); }
+
+      .nav-right { gap: 0.5rem; }
+
+      .template-switch {
+        font-size: 0.5rem;
+        letter-spacing: 0.14em;
+        padding: 0.4rem 0.5rem;
+      }
+
+      .menu-label { display: none; }
+
+      .hero-image { min-height: 30vh; }
+
+      .hero-content {
+        padding: 1.4rem 1rem 1.8rem;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.52rem;
+        letter-spacing: 0.25em;
+      }
+
+      .hero-title {
+        font-size: clamp(1.45rem, 8vw, 2.1rem);
+      }
+
+      .carousel-dots { order: 1; }
+      .more-news { order: 2; }
+    }
+
+    @media (max-height: 760px) and (orientation: landscape) {
+      nav {
+        min-height: 66px;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+      }
+
+      .hero {
+        margin-top: 66px;
+        height: auto;
+      }
+
+      .hero-image { min-height: 48vh; }
+
+      .hero-content {
+        padding: 1rem 1.2rem 1.2rem;
+      }
+
+      .carousel-bar {
+        padding-top: 0.8rem;
+        padding-bottom: 1rem;
+      }
+    }
   </style>
 </head>
 <body class="no-scroll">
@@ -412,7 +544,7 @@
       </button>
 
       <a href="/demo/1" class="overlay-logo">
-        <img src="/company-logo.svg" alt="Marinescu &amp; Asociații" class="logo-image" />
+        <img src="/company-logo-gold.svg" alt="Marinescu &amp; Asociații" class="logo-image" />
       </a>
 
       <div style="width:60px"></div><!-- balance spacer -->
@@ -452,7 +584,7 @@
     </div>
 
     <a href="/demo/1" class="logo">
-      <img src="/company-logo.svg" alt="Marinescu &amp; Asociații" class="logo-image" />
+      <img src="/company-logo-gold.svg" alt="Marinescu &amp; Asociații" class="logo-image" />
     </a>
 
     <div class="nav-right">
