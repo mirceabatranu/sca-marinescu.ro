@@ -38,6 +38,29 @@
       border-bottom: 1px solid rgba(201,165,90,0.15);
     }
 
+    .template-switch {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gold);
+      border: 1px solid rgba(201,165,90,0.35);
+      padding: 0.45rem 0.7rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .template-switch:hover {
+      border-color: var(--gold-light);
+      color: var(--off-white);
+      background: rgba(201,165,90,0.12);
+    }
+
     .brand {
       display: flex;
       flex-direction: column;
@@ -103,6 +126,24 @@
 
     @media (max-width: 600px) {
       .demos { grid-template-columns: 1fr; }
+
+      header {
+        padding: 1rem 1rem;
+        justify-content: flex-start;
+      }
+
+      .template-switch {
+        right: 1rem;
+        font-size: 0.52rem;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand-name {
+        letter-spacing: 0.18em;
+      }
     }
 
     .demo-card {
@@ -232,6 +273,8 @@
       <span class="brand-monogram">M &amp; A</span>
       <span class="brand-name">Marinescu &amp; Asociații · Attorneys at Law</span>
     </div>
+
+    <a id="templateSwitch" class="template-switch" href="/demo/1" aria-label="Schimbă template-ul">Switch to Template 1</a>
   </header>
 
   <main>
@@ -274,5 +317,26 @@
   <footer>
     &copy; 2026 Societatea Civilă de Avocatură Marinescu &amp; Asociații
   </footer>
+
+  <script>
+    /** @type {HTMLAnchorElement | null} */
+    const switchBtn = document.getElementById('templateSwitch');
+    const nextTemplate = localStorage.getItem('demoNextTemplate') === '2' ? '2' : '1';
+
+    function setSwitchTarget(templateId) {
+      if (!switchBtn) return;
+      switchBtn.setAttribute('href', `/demo/${templateId}`);
+      switchBtn.textContent = templateId === '1' ? 'Switch to Template 1' : 'Switch to Template 2';
+    }
+
+    setSwitchTarget(nextTemplate);
+
+    if (switchBtn) {
+      switchBtn.addEventListener('click', () => {
+        const upcomingTemplate = nextTemplate === '1' ? '2' : '1';
+        localStorage.setItem('demoNextTemplate', upcomingTemplate);
+      });
+    }
+  </script>
 </body>
 </html>
