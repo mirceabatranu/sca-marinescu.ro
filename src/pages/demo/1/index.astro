@@ -192,8 +192,16 @@
       font-weight: 400;
       line-height: 1.18;
       color: var(--off-white);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       max-width: 420px;
+    }
+
+    .hero-summary {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: rgba(240,235,224,0.72);
+      max-width: 520px;
     }
 
     /* Bottom carousel bar */
@@ -207,10 +215,11 @@
       z-index: 50;
     }
 
-    .carousel-dots {
+    .carousel-tabs {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     .carousel-arrow {
@@ -218,13 +227,24 @@
       color: var(--gold); font-size: 1.1rem;
     }
 
-    .dot {
-      width: 36px; height: 2px;
-      background: var(--gray);
+    .carousel-tab {
+      border: 1px solid rgba(201,165,90,0.25);
+      background: transparent;
+      color: var(--gray-light);
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.65rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .dot.active { background: var(--off-white); }
+
+    .carousel-tab.active {
+      color: var(--off-white);
+      background: rgba(201,165,90,0.12);
+      border-color: var(--gold);
+    }
 
     .more-news {
       font-family: 'Helvetica Neue', sans-serif;
@@ -486,6 +506,14 @@
 
       .carousel-dots { order: 1; }
       .more-news { order: 2; }
+
+      .carousel-tabs { width: 100%; }
+
+      .carousel-tab {
+        flex: 1 1 auto;
+        text-align: center;
+        font-size: 0.53rem;
+      }
     }
 
     @media (max-height: 760px) and (orientation: landscape) {
@@ -644,20 +672,21 @@
 
     <!-- Right content -->
     <div class="hero-content">
-      <p class="hero-eyebrow">Practică de Excelență</p>
-      <h1 class="hero-title">Soluții Strategice de Litigii Comerciale</h1>
+      <p class="hero-eyebrow" id="heroEyebrow">Servicii</p>
+      <h1 class="hero-title" id="heroTitle">Soluții Strategice de Litigii Comerciale</h1>
+      <p class="hero-summary" id="heroSummary">Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.</p>
     </div>
   </div>
 
   <!-- CAROUSEL BAR -->
   <div class="carousel-bar">
-    <button class="carousel-arrow" aria-label="Anterior">&#8249;</button>
-    <div class="carousel-dots">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+    <button class="carousel-arrow" id="prevSlide" aria-label="Anterior">&#8249;</button>
+    <div class="carousel-tabs" role="tablist" aria-label="Categorii carousel">
+      <button class="carousel-tab active" type="button" role="tab" aria-selected="true" data-slide="0">Servicii</button>
+      <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="1">Clients</button>
+      <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="2">Litigii Comerciale</button>
     </div>
-    <button class="carousel-arrow" aria-label="Următor">&#8250;</button>
+    <button class="carousel-arrow" id="nextSlide" aria-label="Următor">&#8250;</button>
     <a href="#noutati" class="more-news">+ Mai Multe Noutăți</a>
   </div>
 
@@ -687,14 +716,63 @@
       if (e.key === 'Escape') closeOverlay();
     });
 
-    // Carousel dots
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        dots.forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
+    // Carousel content
+    const heroEyebrow = document.getElementById('heroEyebrow');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSummary = document.getElementById('heroSummary');
+    const tabButtons = document.querySelectorAll('.carousel-tab');
+    const prevSlide = document.getElementById('prevSlide');
+    const nextSlide = document.getElementById('nextSlide');
+
+    const slides = [
+      {
+        eyebrow: 'Servicii',
+        title: 'Soluții Strategice de Litigii Comerciale',
+        summary: 'Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.'
+      },
+      {
+        eyebrow: 'Clients',
+        title: 'Companii, Investitori, Grupuri Internaționale',
+        summary: 'Reprezentăm antreprenori locali, companii medii și mari, investitori și stakeholderi internaționali care au nevoie de raportare clară și decizii rapide.'
+      },
+      {
+        eyebrow: 'Litigii Comerciale',
+        title: 'Coordonare Completă în Dosare cu Miză Ridicată',
+        summary: 'Gestionăm dispute comerciale complexe de la analiză și probatoriu până la tactica de ședință, negocieri și executare, cu focus pe rezultat comercial.'
+      }
+    ];
+
+    let activeIndex = 0;
+
+    function renderSlide(index) {
+      activeIndex = index;
+      const slide = slides[index];
+      heroEyebrow.textContent = slide.eyebrow;
+      heroTitle.textContent = slide.title;
+      heroSummary.textContent = slide.summary;
+
+      tabButtons.forEach((btn, btnIndex) => {
+        const isActive = btnIndex === index;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', String(isActive));
       });
+    }
+
+    tabButtons.forEach((btn, index) => {
+      btn.addEventListener('click', () => renderSlide(index));
     });
+
+    prevSlide.addEventListener('click', () => {
+      const newIndex = (activeIndex - 1 + slides.length) % slides.length;
+      renderSlide(newIndex);
+    });
+
+    nextSlide.addEventListener('click', () => {
+      const newIndex = (activeIndex + 1) % slides.length;
+      renderSlide(newIndex);
+    });
+
+    renderSlide(0);
   </script>
 </body>
 </html>
