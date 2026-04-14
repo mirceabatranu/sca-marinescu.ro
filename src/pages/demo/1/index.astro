@@ -163,6 +163,19 @@
       overflow: hidden;
     }
 
+    .hero-image-panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2.2rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.4rem;
+    }
+
     /* SVG wave lines to simulate the K&E abstract */
     .hero-image svg {
       width: 100%; height: 100%;
@@ -173,8 +186,10 @@
     .hero-content {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 4rem 5rem 3.5rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 3rem;
       background: var(--dark);
     }
 
@@ -193,28 +208,33 @@
       line-height: 1.18;
       color: var(--off-white);
       margin-bottom: 1rem;
-      max-width: 420px;
+      max-width: 460px;
+    }
+
+    .hero-detail-title {
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      line-height: 1.25;
+      color: var(--off-white);
+      margin-bottom: 1rem;
+      max-width: 520px;
     }
 
     .hero-summary {
       font-family: 'Helvetica Neue', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       line-height: 1.75;
       color: rgba(240,235,224,0.72);
-      max-width: 520px;
+      max-width: 540px;
     }
 
-    /* Bottom carousel bar */
-    .carousel-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
+    .carousel-inline {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
       column-gap: 1rem;
       row-gap: 0.45rem;
-      padding: 1.4rem 2.5rem;
-      z-index: 50;
+      width: min(100%, 520px);
+      margin-top: 1rem;
     }
 
     .carousel-tabs {
@@ -273,8 +293,6 @@
       text-transform: uppercase;
       color: var(--gold);
       text-decoration: none;
-      grid-column: 1 / -1;
-      justify-self: end;
     }
     .more-news:hover { color: var(--off-white); }
 
@@ -443,21 +461,13 @@
 
       .hero-image { min-height: 38vh; }
 
+      .hero-image-panel { bottom: 1.4rem; }
+
       .hero-content {
         padding: 2rem 1.4rem 2.5rem;
-        justify-content: flex-start;
       }
 
       .hero-title { max-width: none; }
-
-      .carousel-bar {
-        position: static;
-        padding: 1rem 1.2rem 1.4rem;
-        grid-template-columns: auto 1fr auto;
-        column-gap: 0.75rem;
-        row-gap: 0.75rem;
-        background: var(--dark);
-      }
 
       .back-link {
         position: static;
@@ -518,6 +528,11 @@
         padding: 1.4rem 1rem 1.8rem;
       }
 
+      .hero-image-panel {
+        bottom: 1rem;
+        padding: 0 1rem;
+      }
+
       .hero-eyebrow {
         font-size: 0.52rem;
         letter-spacing: 0.25em;
@@ -527,16 +542,17 @@
         font-size: clamp(1.45rem, 8vw, 2.1rem);
       }
 
+      .carousel-inline {
+        width: 100%;
+        column-gap: 0.45rem;
+      }
+
       .carousel-tabs { width: 100%; }
 
       .carousel-tab {
         flex: 1 1 30%;
         text-align: center;
         font-size: 0.53rem;
-      }
-
-      .more-news {
-        justify-self: center;
       }
     }
 
@@ -692,26 +708,29 @@
         <!-- Subtle gold accent line -->
         <path d="M320,900 C300,750 265,598 322,448 S401,248 322,98" fill="none" stroke="rgba(201,165,90,0.25)" stroke-width="1.5"/>
       </svg>
+
+      <div class="hero-image-panel">
+        <p class="hero-eyebrow">Practică de Excelență</p>
+        <h1 class="hero-title">Soluții Strategice de Litigii Comerciale</h1>
+
+        <div class="carousel-inline">
+          <button class="carousel-arrow" id="prevSlide" aria-label="Anterior">&#8249;</button>
+          <div class="carousel-tabs" role="tablist" aria-label="Categorii carousel">
+            <button class="carousel-tab active" type="button" role="tab" aria-selected="true" data-slide="0">Servicii</button>
+            <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="1">Clients</button>
+            <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="2">Litigii Comerciale</button>
+          </div>
+          <button class="carousel-arrow" id="nextSlide" aria-label="Următor">&#8250;</button>
+        </div>
+      </div>
     </div>
 
     <!-- Right content -->
     <div class="hero-content">
       <p class="hero-eyebrow" id="heroEyebrow">Servicii</p>
-      <h1 class="hero-title" id="heroTitle">Soluții Strategice de Litigii Comerciale</h1>
+      <h2 class="hero-detail-title" id="heroTitle">Soluții Strategice de Litigii Comerciale</h2>
       <p class="hero-summary" id="heroSummary">Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.</p>
     </div>
-  </div>
-
-  <!-- CAROUSEL BAR -->
-  <div class="carousel-bar">
-    <button class="carousel-arrow" id="prevSlide" aria-label="Anterior">&#8249;</button>
-    <div class="carousel-tabs" role="tablist" aria-label="Categorii carousel">
-      <button class="carousel-tab active" type="button" role="tab" aria-selected="true" data-slide="0">Servicii</button>
-      <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="1">Clients</button>
-      <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="2">Litigii Comerciale</button>
-    </div>
-    <button class="carousel-arrow" id="nextSlide" aria-label="Următor">&#8250;</button>
-    <a href="#noutati" class="more-news">+ Mai Multe Noutăți</a>
   </div>
 
   <!-- BACK LINK -->
