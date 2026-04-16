@@ -8,12 +8,12 @@
   <link rel="canonical" href="https://sca-marinescu.ro/" />
   <link rel="alternate" href="https://sca-marinescu.ro/" hreflang="ro-RO" />
   <link rel="alternate" href="https://sca-marinescu.ro/en/" hreflang="en" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --gold: #C9A55A;
-      --gold-dim: rgba(201,165,90,0.4);
       --dark: #0E0D0C;
       --dark-nav: #131210;
       --off-white: #F0EBE0;
@@ -36,28 +36,23 @@
       z-index: 300;
       display: flex;
       align-items: center;
-      padding: 1.4rem 2.5rem;
-      min-height: 86px;
+      padding: 1rem 2.5rem;
+      min-height: 80px;
       background: var(--dark-nav);
       border-bottom: 1px solid rgba(201,165,90,0.12);
     }
 
     /* Logo — left side */
     .logo {
-      text-align: center;
       text-decoration: none;
-      background: var(--dark-nav);
-      border: 1px solid rgba(201,165,90,0.28);
-      padding: 0.4rem 0.65rem;
       flex-shrink: 0;
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .logo-image {
       display: block;
-      width: 260px;
-      max-width: 38vw;
-      height: auto;
+      height: 52px;
+      width: auto;
     }
 
     /* Nav controls — far right */
@@ -87,25 +82,23 @@
       background: rgba(201,165,90,0.12);
     }
 
-    .menu-btn {
-      background: none; border: none; cursor: pointer;
-      display: flex; flex-direction: column;
+    .menu-btn-icon {
+      display: flex;
+      flex-direction: column;
       align-items: flex-end;
       gap: 4px;
-      padding: 0.3rem;
     }
 
-    .menu-btn span {
+    .menu-btn-icon span {
       display: block;
       height: 1.5px;
       background: var(--gold);
-      transition: width 0.2s;
     }
-    .menu-btn span:nth-child(1) { width: 22px; }
-    .menu-btn span:nth-child(2) { width: 16px; }
-    .menu-btn span:nth-child(3) { width: 22px; }
+    .menu-btn-icon span:nth-child(1) { width: 22px; }
+    .menu-btn-icon span:nth-child(2) { width: 16px; }
+    .menu-btn-icon span:nth-child(3) { width: 22px; }
 
-    .menu-label {
+    .menu-btn-label {
       font-family: 'Helvetica Neue', sans-serif;
       font-size: 0.5rem;
       letter-spacing: 0.3em;
@@ -184,7 +177,6 @@
     }
 
     .close-btn:hover { color: var(--gold); }
-
     .close-btn svg { stroke: currentColor; stroke-width: 1.5; }
 
     .close-label {
@@ -216,9 +208,7 @@
       font-family: 'Georgia', serif;
     }
 
-    .overlay-nav a:hover {
-      color: var(--gold);
-    }
+    .overlay-nav a:hover { color: var(--gold); }
 
     .overlay-footer {
       display: flex;
@@ -241,92 +231,87 @@
     .overlay-legal a { color: rgba(240, 235, 224, 0.42); text-decoration: none; }
     .overlay-legal a:hover { color: var(--gold); }
 
-    /* ── HERO ── */
+    /* ── HERO — full-width, centered content ── */
     .hero {
-      height: calc(100vh - 86px);
-      margin-top: 86px;
-      display: grid;
-      grid-template-columns: 45% 55%;
-    }
-
-    /* Left: abstract wave image */
-    .hero-image {
+      height: calc(100vh - 80px);
+      margin-top: 80px;
       position: relative;
-      overflow: hidden;
-    }
-
-    .hero-image-panel {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 2.2rem;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 1.4rem;
-    }
-
-    /* SVG wave lines */
-    .hero-image svg {
-      width: 100%; height: 100%;
-      position: absolute; inset: 0;
-    }
-
-    /* Right: content panel */
-    .hero-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+    }
+
+    /* Full-width wave background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Dark overlay for text readability */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 8, 8, 0.52);
+    }
+
+    /* Centered content */
+    .hero-center {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      padding: 2rem 3rem;
-      background: var(--dark);
+      padding: 2rem clamp(1.5rem, 6vw, 5rem);
+      max-width: min(900px, 92vw);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .hero-eyebrow {
       font-family: 'Helvetica Neue', sans-serif;
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1rem;
+      margin: 0 0 1.1rem;
     }
 
-    .hero-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    .hero-main-title {
+      font-size: clamp(1.7rem, 3.8vw, 3rem);
       font-weight: 400;
       line-height: 1.18;
       color: var(--off-white);
-      margin-bottom: 1rem;
-      max-width: 460px;
-    }
-
-    .hero-detail-title {
-      font-size: clamp(1.35rem, 2.4vw, 2rem);
-      line-height: 1.25;
-      color: var(--off-white);
-      margin-bottom: 1rem;
-      max-width: 520px;
+      margin: 0 0 1.3rem;
+      max-width: 780px;
     }
 
     .hero-summary {
       font-family: 'Helvetica Neue', sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: rgba(240,235,224,0.72);
-      max-width: 540px;
+      font-size: 0.97rem;
+      line-height: 1.78;
+      color: rgba(240,235,224,0.70);
+      max-width: 600px;
+      margin: 0;
     }
 
-    .carousel-inline {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
+    /* Carousel bar — bottom of hero */
+    .hero-carousel-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
       align-items: center;
-      column-gap: 1rem;
-      row-gap: 0.45rem;
-      width: min(100%, 520px);
-      margin-top: 1rem;
+      gap: 1rem;
+      padding: 0 2.5rem 2.5rem;
+      flex-shrink: 0;
     }
 
     .carousel-tabs {
@@ -339,8 +324,11 @@
 
     .carousel-arrow {
       background: none; border: none; cursor: pointer;
-      color: var(--gold); font-size: 1.1rem;
+      color: var(--gold); font-size: 1.2rem;
+      transition: color 0.2s;
+      padding: 0.2rem 0.4rem;
     }
+    .carousel-arrow:hover { color: var(--off-white); }
 
     .carousel-tab {
       border: none;
@@ -367,7 +355,8 @@
 
     .carousel-tab.active { color: var(--off-white); }
     .carousel-tab.active::after { height: 3px; background: var(--off-white); }
-    .carousel-tab:hover { color: var(--off-white); }
+    /* Gold hover on carousel tabs */
+    .carousel-tab:hover { color: var(--gold); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -391,70 +380,32 @@
 
     @media (max-width: 1024px) {
       nav {
-        padding: 1rem 1.2rem;
-        min-height: 74px;
+        padding: 0.9rem 1.2rem;
+        min-height: 70px;
       }
 
-      .logo-image { width: 220px; max-width: 40vw; }
+      .logo-image { height: 44px; }
 
       .hero {
-        margin-top: 74px;
-        height: calc(100vh - 74px);
-        grid-template-columns: 1fr;
-      }
-
-      .hero-image { min-height: 38vh; }
-
-      .hero-image-panel { bottom: 1.4rem; }
-
-      .hero-content {
-        padding: 2rem 1.4rem 2.5rem;
-      }
-
-      .hero-title { max-width: none; }
-
-      .overlay-nav {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-
-      .overlay-footer {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        margin-top: 70px;
+        height: calc(100vh - 70px);
       }
     }
 
     @media (max-width: 720px) {
-      .logo-image { width: min(180px, 44vw); }
+      .logo-image { height: 38px; }
       .lang-switch { font-size: 0.5rem; letter-spacing: 0.14em; padding: 0.4rem 0.5rem; }
-      .menu-label { display: none; }
-      .hero-image { min-height: 30vh; }
-      .hero-content { padding: 1.4rem 1rem 1.8rem; }
-      .hero-image-panel { bottom: 1rem; padding: 0 1rem; }
-      .hero-eyebrow { font-size: 0.52rem; letter-spacing: 0.25em; }
-      .hero-title { font-size: clamp(1.45rem, 8vw, 2.1rem); }
-      .carousel-inline { width: 100%; column-gap: 0.45rem; }
-      .carousel-tabs { width: 100%; }
-      .carousel-tab { flex: 1 1 30%; text-align: center; font-size: 0.53rem; }
+      .menu-btn-label { display: none; }
+      .hero-carousel-bar { padding: 0 1.2rem 1.8rem; gap: 0.5rem; }
+      .carousel-tab { font-size: 0.53rem; }
+      .hero-center { padding: 1.5rem 1.2rem; }
     }
 
-    @media (max-height: 760px) and (orientation: landscape) {
-      nav {
-        min-height: 66px;
-        padding-top: 0.7rem;
-        padding-bottom: 0.7rem;
-      }
-
-      .hero {
-        margin-top: 66px;
-        height: auto;
-      }
-
-      .hero-image { min-height: 48vh; }
-
-      .hero-content {
-        padding: 1rem 1.2rem 1.2rem;
-      }
+    @media (max-height: 700px) and (orientation: landscape) {
+      nav { min-height: 60px; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+      .logo-image { height: 36px; }
+      .hero { margin-top: 60px; height: calc(100vh - 60px); }
+      .hero-main-title { font-size: clamp(1.3rem, 3.5vw, 2.2rem); }
     }
   </style>
 </head>
@@ -492,7 +443,7 @@
 
   <!-- TOPBAR -->
   <nav id="mainNav">
-    <a href="/" class="logo">
+    <a href="/" class="logo" aria-label="SCA Marinescu, pagina principala">
       <img src="/company-logo-gold.svg" alt="Marinescu &amp; Asociații" class="logo-image" />
     </a>
 
@@ -500,80 +451,77 @@
       <a href="/en/" class="lang-switch" hreflang="en" aria-label="English version">EN</a>
 
       <button class="menu-btn-wrap" id="menuBtn" aria-label="Deschide meniu" aria-expanded="false">
-        <div class="menu-btn">
+        <div class="menu-btn-icon">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <span class="menu-label">Meniu</span>
+        <span class="menu-btn-label">Meniu</span>
       </button>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO — centered layout with full-width wave background -->
   <div class="hero">
-    <!-- Left abstract wave panel -->
-    <div class="hero-image">
-      <svg viewBox="0 0 640 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Wave background -->
+    <div class="hero-bg">
+      <svg viewBox="0 0 900 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="waveBg" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#1A3040"/>
             <stop offset="50%" stop-color="#0E2030"/>
             <stop offset="100%" stop-color="#060E14"/>
           </linearGradient>
-          <linearGradient id="waveShine" x1="20%" y1="0%" x2="80%" y2="100%">
-            <stop offset="0%" stop-color="#A8D8F0" stop-opacity="0.6"/>
-            <stop offset="40%" stop-color="#7AB8D8" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#3A6080" stop-opacity="0"/>
-          </linearGradient>
         </defs>
-        <rect width="640" height="900" fill="url(#waveBg)"/>
+        <rect width="900" height="900" fill="url(#waveBg)"/>
         <g fill="none" stroke-width="0.8">
-          <path d="M320,900 C300,750 260,600 320,450 S400,250 320,100 S200,-50 100,50" stroke="rgba(160,210,240,0.18)"/>
-          <path d="M320,900 C295,745 250,590 315,440 S400,235 318,88 S193,-60 93,40" stroke="rgba(160,210,240,0.16)"/>
-          <path d="M320,900 C288,738 242,578 310,428 S402,220 316,76 S186,-70 86,30" stroke="rgba(160,210,240,0.14)"/>
-          <path d="M320,900 C280,730 234,566 304,416 S404,204 314,64 S178,-80 78,20" stroke="rgba(160,210,240,0.12)"/>
-          <path d="M320,900 C272,722 226,554 298,404 S406,188 312,52 S171,-90 71,10" stroke="rgba(160,210,240,0.10)"/>
-          <path d="M320,900 C264,714 218,542 292,392 S408,172 310,40 S164,-100 64,0" stroke="rgba(160,210,240,0.09)"/>
-          <path d="M320,900 C256,706 210,530 286,380 S410,156 308,28 S157,-110 57,-10" stroke="rgba(160,210,240,0.08)"/>
-          <path d="M320,900 C248,698 202,518 280,368 S412,140 306,16 S150,-120 50,-20" stroke="rgba(160,210,240,0.07)"/>
-          <path d="M320,900 C240,690 194,506 274,356 S414,124 304,4 S143,-130 43,-30" stroke="rgba(160,210,240,0.06)"/>
-          <path d="M320,900 C232,682 186,494 268,344 S416,108 302,-8 S136,-140 36,-40" stroke="rgba(160,210,240,0.05)"/>
+          <path d="M450,900 C420,750 380,600 450,450 S560,250 450,100 S280,-50 150,50" stroke="rgba(160,210,240,0.15)"/>
+          <path d="M450,900 C415,745 370,590 445,440 S560,235 448,88 S270,-60 143,40" stroke="rgba(160,210,240,0.13)"/>
+          <path d="M450,900 C408,738 362,578 440,428 S562,220 446,76 S263,-70 136,30" stroke="rgba(160,210,240,0.11)"/>
+          <path d="M450,900 C400,730 354,566 434,416 S564,204 444,64 S256,-80 128,20" stroke="rgba(160,210,240,0.09)"/>
+          <path d="M450,900 C392,722 346,554 428,404 S566,188 442,52 S249,-90 121,10" stroke="rgba(160,210,240,0.07)"/>
+          <path d="M450,900 C384,714 338,542 422,392 S568,172 440,40 S242,-100 114,0" stroke="rgba(160,210,240,0.06)"/>
+          <!-- right side waves -->
+          <path d="M750,900 C720,750 680,600 750,450 S830,250 750,100 S640,-30 560,70" stroke="rgba(160,210,240,0.12)"/>
+          <path d="M750,900 C715,745 670,590 745,440 S830,235 748,88 S630,-40 552,60" stroke="rgba(160,210,240,0.09)"/>
+          <path d="M750,900 C708,738 662,578 740,428 S832,220 746,76 S622,-50 544,50" stroke="rgba(160,210,240,0.07)"/>
           <!-- Bright highlight ribbons -->
-          <path d="M320,900 C305,755 272,608 328,460 S398,262 326,112" stroke="rgba(190,230,250,0.35)"/>
-          <path d="M320,900 C308,758 278,614 333,466 S396,268 329,118" stroke="rgba(190,230,250,0.28)"/>
-          <path d="M320,900 C311,761 284,620 338,472 S394,274 332,124" stroke="rgba(190,230,250,0.20)"/>
-          <path d="M320,900 C314,764 290,626 343,478 S392,280 335,130" stroke="rgba(190,230,250,0.14)"/>
+          <path d="M450,900 C435,755 402,608 458,460 S528,262 456,112" stroke="rgba(190,230,250,0.30)"/>
+          <path d="M450,900 C438,758 408,614 463,466 S526,268 459,118" stroke="rgba(190,230,250,0.22)"/>
+          <path d="M450,900 C441,761 414,620 468,472 S524,274 462,124" stroke="rgba(190,230,250,0.16)"/>
         </g>
-        <!-- Subtle gold accent line -->
-        <path d="M320,900 C300,750 265,598 322,448 S401,248 322,98" fill="none" stroke="rgba(201,165,90,0.25)" stroke-width="1.5"/>
+        <!-- Gold accent line -->
+        <path d="M450,900 C430,750 395,598 452,448 S531,248 452,98" fill="none" stroke="rgba(201,165,90,0.28)" stroke-width="1.8"/>
+        <path d="M750,900 C730,750 700,595 752,445 S828,248 750,98" fill="none" stroke="rgba(201,165,90,0.18)" stroke-width="1.4"/>
       </svg>
-
-      <div class="hero-image-panel">
-        <p class="hero-eyebrow">Practică de Excelență</p>
-        <h1 class="hero-title">Soluții Strategice de Litigii Comerciale</h1>
-
-        <div class="carousel-inline">
-          <button class="carousel-arrow" id="prevSlide" aria-label="Anterior">&#8249;</button>
-          <div class="carousel-tabs" role="tablist" aria-label="Categorii carousel">
-            <button class="carousel-tab active" type="button" role="tab" aria-selected="true" data-slide="0">Servicii</button>
-            <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="1">Clienți</button>
-            <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="2">Litigii Comerciale</button>
-          </div>
-          <button class="carousel-arrow" id="nextSlide" aria-label="Următor">&#8250;</button>
-        </div>
-      </div>
     </div>
 
-    <!-- Right content -->
-    <div class="hero-content">
+    <!-- Dark overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Centered content — changes with carousel -->
+    <div class="hero-center">
       <p class="hero-eyebrow" id="heroEyebrow">Servicii</p>
-      <h2 class="hero-detail-title" id="heroTitle">Soluții Strategice de Litigii Comerciale</h2>
+      <h1 class="hero-main-title" id="heroTitle">Soluții Strategice de Litigii Comerciale</h1>
       <p class="hero-summary" id="heroSummary">Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.</p>
     </div>
+
+    <!-- Carousel tabs at bottom -->
+    <div class="hero-carousel-bar">
+      <button class="carousel-arrow" id="prevSlide" aria-label="Anterior">&#8249;</button>
+      <div class="carousel-tabs" role="tablist" aria-label="Categorii">
+        <button class="carousel-tab active" type="button" role="tab" aria-selected="true" data-slide="0">Servicii</button>
+        <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="1">Clienți</button>
+        <button class="carousel-tab" type="button" role="tab" aria-selected="false" data-slide="2">Litigii Comerciale</button>
+      </div>
+      <button class="carousel-arrow" id="nextSlide" aria-label="Următor">&#8250;</button>
+    </div>
+
   </div>
 
   <script>
+    // ── Menu overlay ──
     const overlay = document.getElementById('overlay');
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
@@ -595,29 +543,17 @@
     }
 
     menuBtn.addEventListener('click', () => {
-      if (overlay.classList.contains('open')) {
-        closeOverlay();
-      } else {
-        openOverlay();
-      }
+      overlay.classList.contains('open') ? closeOverlay() : openOverlay();
     });
 
     closeBtn.addEventListener('click', closeOverlay);
     backdrop.addEventListener('click', closeOverlay);
 
-    overlay.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeOverlay();
-    });
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeOverlay();
     });
 
-    // Carousel controls
-    const tabButtons = document.querySelectorAll('.carousel-tab');
-    const prevSlide = document.getElementById('prevSlide');
-    const nextSlide = document.getElementById('nextSlide');
-
+    // ── Carousel ──
     const slides = [
       {
         eyebrow: 'Servicii',
@@ -636,35 +572,27 @@
       },
     ];
 
+    const tabButtons = document.querySelectorAll('.carousel-tab');
+    const prevSlide = document.getElementById('prevSlide');
+    const nextSlide = document.getElementById('nextSlide');
     let activeIndex = 0;
 
-    /** @param {number} index */
     function renderSlide(index) {
       activeIndex = index;
-      tabButtons.forEach((btn, btnIndex) => {
-        const isActive = btnIndex === index;
-        btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-selected', String(isActive));
+      tabButtons.forEach((btn, i) => {
+        const active = i === index;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', String(active));
       });
-      const slide = slides[index];
-      document.getElementById('heroEyebrow').textContent = slide.eyebrow;
-      document.getElementById('heroTitle').textContent = slide.title;
-      document.getElementById('heroSummary').textContent = slide.summary;
+      const s = slides[index];
+      document.getElementById('heroEyebrow').textContent = s.eyebrow;
+      document.getElementById('heroTitle').textContent = s.title;
+      document.getElementById('heroSummary').textContent = s.summary;
     }
 
-    tabButtons.forEach((btn, index) => {
-      btn.addEventListener('click', () => renderSlide(index));
-    });
-
-    prevSlide.addEventListener('click', () => {
-      const newIndex = (activeIndex - 1 + tabButtons.length) % tabButtons.length;
-      renderSlide(newIndex);
-    });
-
-    nextSlide.addEventListener('click', () => {
-      const newIndex = (activeIndex + 1) % tabButtons.length;
-      renderSlide(newIndex);
-    });
+    tabButtons.forEach((btn, i) => btn.addEventListener('click', () => renderSlide(i)));
+    prevSlide.addEventListener('click', () => renderSlide((activeIndex - 1 + slides.length) % slides.length));
+    nextSlide.addEventListener('click', () => renderSlide((activeIndex + 1) % slides.length));
 
     renderSlide(0);
   </script>
