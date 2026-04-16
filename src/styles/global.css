@@ -52,55 +52,224 @@ a {
   margin: 0 auto;
 }
 
+/* ── SITE HEADER ── */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 60;
   backdrop-filter: blur(18px);
   background: rgba(244, 239, 230, 0.82);
   border-bottom: 1px solid rgba(16, 40, 31, 0.08);
+  transition: none;
 }
 
+/* ── NAV SHELL — flex, logo left, controls right ── */
 .nav-shell {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1.25rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   min-height: 5rem;
+  gap: 1rem;
 }
 
+/* ── BRAND LOGO ── */
 .brand {
-  display: inline-flex;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo {
+  display: block;
+  height: 3.6rem;
+  width: auto;
+}
+
+/* Logo slides left when menu opens — desktop only */
+@media (min-width: 901px) {
+  .site-header.menu-open .brand {
+    transform: translateX(-1.5rem);
+  }
+}
+
+/* ── NAV CONTROLS — language + menu toggle, far right ── */
+.nav-controls {
+  display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 1.25rem;
+  margin-left: auto;
+}
+
+/* ── LANGUAGE LINK ── */
+.language-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  color: var(--brand);
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 2.7rem;
-  height: 2.7rem;
-  border-radius: 1rem 1rem 0.2rem 1rem;
-  background: linear-gradient(160deg, var(--brand) 0%, #173b2e 100%);
-  color: #f8f3eb;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+.language-link span,
+.button,
+.signal-card p,
+.panel-list strong,
+.approach-steps strong,
+.contact-card a,
+.footer-links a {
+  font-weight: 600;
 }
 
-.brand-text {
+/* ── NAV MENU TOGGLE (hamburger) ── */
+.nav-menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  color: var(--brand);
 }
 
-.brand-text strong {
-  font-size: 0.92rem;
-  letter-spacing: 0.06em;
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--brand);
+}
+
+.nav-hamburger span:nth-child(1),
+.nav-hamburger span:nth-child(3) { width: 22px; }
+.nav-hamburger span:nth-child(2) { width: 16px; }
+
+.nav-menu-label {
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
+  color: var(--brand);
+  font-family: var(--sans);
 }
 
+/* ── BACKDROP ── */
+.nav-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: rgba(16, 40, 31, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.nav-overlay-backdrop.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── MENU OVERLAY PANEL — 40% slide from right ── */
+.nav-overlay-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100vh;
+  z-index: 50;
+  background: var(--brand);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-left: 1px solid rgba(185, 139, 66, 0.18);
+}
+
+.nav-overlay-panel.open {
+  transform: translateX(0);
+}
+
+.nav-overlay-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.4rem 1.8rem;
+  flex-shrink: 0;
+}
+
+.nav-overlay-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+
+.nav-overlay-close:hover { color: var(--accent); }
+
+.nav-overlay-close-label {
+  font-size: 0.5rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: inherit;
+  font-family: var(--sans);
+}
+
+/* Nav links — white text, gold on hover */
+.nav-overlay-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem 3rem;
+  gap: 0.4rem;
+}
+
+.nav-overlay-link {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
+  line-height: 1.35;
+  transition: color 0.2s;
+  padding: 0.2rem 0;
+}
+
+.nav-overlay-link:hover {
+  color: var(--accent);
+}
+
+.nav-overlay-footer {
+  padding: 1.5rem 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.nav-overlay-lang {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s;
+}
+
+.nav-overlay-lang:hover { color: var(--accent); }
+
+/* ── SHARED SMALL TEXT ── */
 .brand-text span,
 .language-link small,
 .eyebrow,
@@ -128,42 +297,7 @@ a {
   color: var(--ink-soft);
 }
 
-.primary-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.primary-nav a,
-.language-link,
-.footer-links a {
-  text-decoration: none;
-}
-
-.primary-nav a {
-  font-size: 0.92rem;
-  padding: 0.4rem 0;
-}
-
-.language-link {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.15rem;
-  color: var(--brand);
-}
-
-.language-link span,
-.button,
-.signal-card p,
-.panel-list strong,
-.approach-steps strong,
-.contact-card a,
-.footer-links a {
-  font-weight: 600;
-}
-
+/* ── HERO SECTION ── */
 .hero-section {
   padding: 5.5rem 0 3rem;
 }
@@ -294,6 +428,7 @@ h3 {
   border-radius: 999px;
   border: 1px solid transparent;
   letter-spacing: 0.04em;
+  text-decoration: none;
 }
 
 .button-primary {
@@ -499,6 +634,11 @@ h3 {
   flex-wrap: wrap;
 }
 
+.primary-nav a,
+.footer-links a {
+  text-decoration: none;
+}
+
 .error-wrap {
   min-height: 100vh;
   display: grid;
@@ -517,8 +657,24 @@ h3 {
   line-height: 1.75;
 }
 
+/* ── RESPONSIVE ── */
+
+/* Mobile overlay — full width */
 @media (max-width: 900px) {
-  .nav-shell,
+  .nav-overlay-panel {
+    width: 100%;
+    border-left: none;
+  }
+
+  .nav-overlay-links {
+    padding: 1rem 2rem;
+  }
+
+  .nav-overlay-footer {
+    padding: 1.5rem 2rem;
+  }
+
+  /* Single column layout */
   .hero-grid,
   .practice-grid,
   .signal-grid,
@@ -530,30 +686,26 @@ h3 {
     display: grid;
   }
 
-  .nav-shell {
-    padding: 1rem 0;
-  }
-
-  .primary-nav {
-    justify-content: flex-start;
-  }
-
-  .language-link {
-    align-items: flex-start;
+  .footer-shell {
+    gap: 0.8rem;
   }
 
   h1 {
     max-width: none;
-  }
-
-  .footer-shell {
-    gap: 0.8rem;
   }
 }
 
 @media (max-width: 640px) {
   .shell {
     width: min(1120px, calc(100% - 1.25rem));
+  }
+
+  .brand-logo {
+    height: 2.8rem;
+  }
+
+  .nav-menu-label {
+    display: none;
   }
 
   .hero-section {
@@ -568,5 +720,9 @@ h3 {
 
   .button {
     width: 100%;
+  }
+
+  .nav-overlay-link {
+    font-size: clamp(1.4rem, 7vw, 2rem);
   }
 }
