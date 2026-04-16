@@ -1,8 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 260" role="img" aria-labelledby="title desc">
-  <title>Marinescu &amp; Asociatii</title>
-  <desc>Gold company logo for Marinescu and Asociatii Attorneys at Law</desc>
-  <rect width="1000" height="260" fill="transparent" />
-  <text x="500" y="86" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" fill="#C9A55A">M.</text>
-  <text x="500" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66" font-weight="700" letter-spacing="0.5" fill="#C9A55A">MARINESCU &amp; ASOCIAȚII</text>
-  <text x="500" y="222" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" letter-spacing="4" fill="#C9A55A">ATTORNEYS AT LAW</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-labelledby="logo-ma-title">
+  <title id="logo-ma-title">Marinescu &amp; Asociatii Attorneys at Law</title>
+  <rect width="1000" height="300" fill="transparent"/>
+  <!-- Monogram MA. in gold -->
+  <text
+    x="500" y="108"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="105" font-weight="700"
+    letter-spacing="2"
+    fill="#C9A55A">MA.</text>
+  <!-- Firm name in white -->
+  <text
+    x="500" y="198"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="64" font-weight="700"
+    letter-spacing="3"
+    fill="#FFFFFF">MARINESCU &amp; ASOCIAȚII</text>
+  <!-- Tagline in white -->
+  <text
+    x="500" y="258"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="37" font-weight="400"
+    letter-spacing="7"
+    fill="#FFFFFF">ATTORNEYS AT LAW</text>
 </svg>
