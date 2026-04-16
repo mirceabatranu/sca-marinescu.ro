@@ -294,6 +294,29 @@
       margin: 0;
     }
 
+    .hero-cta {
+      margin-top: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      border: 1px solid rgba(201,165,90,0.5);
+      background: rgba(201,165,90,0.18);
+      padding: 0.72rem 1rem;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .hero-cta:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(201,165,90,0.08);
+    }
+
     .hero-carousel-bar {
       position: relative;
       z-index: 2;
@@ -396,10 +419,10 @@
     </div>
 
     <nav class="overlay-nav">
-      <a href="#services" onclick="closeOverlay()">Practice</a>
-      <a href="#approach" onclick="closeOverlay()">Approach</a>
-      <a href="#matters" onclick="closeOverlay()">Mandates</a>
-      <a href="#insights" onclick="closeOverlay()">Questions</a>
+      <a href="/en/" onclick="closeOverlay()">Home</a>
+      <a href="#about" onclick="closeOverlay()">About Us</a>
+      <a href="#services" onclick="closeOverlay()">Practice Areas</a>
+      <a href="#insights" onclick="closeOverlay()">Legal Blog</a>
       <a href="#contact" onclick="closeOverlay()">Contact</a>
     </nav>
 
@@ -468,9 +491,10 @@
 
     <!-- Centered content — changes with carousel -->
     <div class="hero-center">
-      <p class="hero-eyebrow" id="heroEyebrow">Services</p>
-      <h1 class="hero-main-title" id="heroTitle">Strategic Commercial Litigation in Romania</h1>
-      <p class="hero-summary" id="heroSummary">Representation in contract disputes, shareholder conflicts, arbitration and enforcement, with procedural strategy built around the real commercial stake.</p>
+      <p class="hero-eyebrow" id="heroEyebrow">Protecting your business and personal interests with strategic, results-driven legal solutions.</p>
+      <h1 class="hero-main-title" id="heroTitle">SCA Marinescu | Expert Legal Counsel &amp; Dedicated Advocacy in Romania</h1>
+      <p class="hero-summary" id="heroSummary">At SCA Marinescu, we do more than just navigate the law; we provide proactive strategies to secure your future. As a premier Societate Civila de Avocati, our team specializes in corporate law, civil litigation, and comprehensive legal consulting for both businesses and individuals. Whether you are closing a complex merger, facing a high-stakes dispute, or needing day-to-day legal compliance, we deliver clear, actionable, and personalized solutions.</p>
+      <a class="hero-cta" href="mailto:contact@sca-marinescu.ro?subject=Schedule%20a%20Consultation">Schedule a Consultation</a>
     </div>
 
     <!-- Carousel tabs at bottom -->
@@ -522,9 +546,9 @@
     // ── Carousel ──
     const slides = [
       {
-        eyebrow: 'Services',
-        title: 'Strategic Commercial Litigation in Romania',
-        summary: 'Representation in contract disputes, shareholder conflicts, arbitration and enforcement, with procedural strategy built around the real commercial stake.',
+        eyebrow: 'Protecting your business and personal interests with strategic, results-driven legal solutions.',
+        title: 'SCA Marinescu | Expert Legal Counsel & Dedicated Advocacy in Romania',
+        summary: 'At SCA Marinescu, we do more than just navigate the law; we provide proactive strategies to secure your future. As a premier Societate Civila de Avocati, our team specializes in corporate law, civil litigation, and comprehensive legal consulting for both businesses and individuals. Whether you are closing a complex merger, facing a high-stakes dispute, or needing day-to-day legal compliance, we deliver clear, actionable, and personalized solutions.',
       },
       {
         eyebrow: 'Clients',

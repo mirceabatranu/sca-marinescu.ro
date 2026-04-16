@@ -303,6 +303,29 @@
       margin: 0;
     }
 
+    .hero-cta {
+      margin-top: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      border: 1px solid rgba(201,165,90,0.5);
+      background: rgba(201,165,90,0.18);
+      padding: 0.72rem 1rem;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .hero-cta:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(201,165,90,0.08);
+    }
+
     /* Carousel bar — bottom of hero */
     .hero-carousel-bar {
       position: relative;
@@ -427,10 +450,10 @@
     </div>
 
     <nav class="overlay-nav">
-      <a href="#services" onclick="closeOverlay()">Practică</a>
-      <a href="#approach" onclick="closeOverlay()">Abordare</a>
-      <a href="#matters" onclick="closeOverlay()">Mandate</a>
-      <a href="#insights" onclick="closeOverlay()">Întrebări</a>
+      <a href="/" onclick="closeOverlay()">Acasa</a>
+      <a href="#about" onclick="closeOverlay()">Despre Noi</a>
+      <a href="#services" onclick="closeOverlay()">Arii de Practica</a>
+      <a href="#insights" onclick="closeOverlay()">Articole Juridice</a>
       <a href="#contact" onclick="closeOverlay()">Contact</a>
     </nav>
 
@@ -502,9 +525,10 @@
 
     <!-- Centered content — changes with carousel -->
     <div class="hero-center">
-      <p class="hero-eyebrow" id="heroEyebrow">Servicii</p>
-      <h1 class="hero-main-title" id="heroTitle">Soluții Strategice de Litigii Comerciale</h1>
-      <p class="hero-summary" id="heroSummary">Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.</p>
+      <p class="hero-eyebrow" id="heroEyebrow">Protejam interesele afacerii si personale cu solutii juridice strategice, orientate spre rezultate.</p>
+      <h1 class="hero-main-title" id="heroTitle">SCA Marinescu | Consiliere Juridica Experta si Reprezentare Dedicata in Romania</h1>
+      <p class="hero-summary" id="heroSummary">La SCA Marinescu, facem mai mult decat sa navigam legea: oferim strategii proactive pentru a-ti securiza viitorul. Ca Societate Civila de Avocatura, echipa noastra este specializata in drept comercial, litigii civile si consultanta juridica pentru companii si persoane fizice. Fie ca inchei o fuziune complexa, gestionezi un litigiu cu miza ridicata sau ai nevoie de conformitate juridica de zi cu zi, livram solutii clare, aplicabile si personalizate.</p>
+      <a class="hero-cta" href="mailto:contact@sca-marinescu.ro?subject=Programare%20Consultatie">Programeaza o consultatie</a>
     </div>
 
     <!-- Carousel tabs at bottom -->
@@ -556,19 +580,19 @@
     // ── Carousel ──
     const slides = [
       {
-        eyebrow: 'Servicii',
-        title: 'Soluții Strategice de Litigii Comerciale',
-        summary: 'Asistență în litigii contractuale, conflicte între acționari, arbitraj și executare, cu strategie procesuală construită pe miza comercială reală.',
+        eyebrow: 'Protejam interesele afacerii si personale cu solutii juridice strategice, orientate spre rezultate.',
+        title: 'SCA Marinescu | Consiliere Juridica Experta si Reprezentare Dedicata in Romania',
+        summary: 'La SCA Marinescu, facem mai mult decat sa navigam legea: oferim strategii proactive pentru a-ti securiza viitorul. Ca Societate Civila de Avocatura, echipa noastra este specializata in drept comercial, litigii civile si consultanta juridica pentru companii si persoane fizice. Fie ca inchei o fuziune complexa, gestionezi un litigiu cu miza ridicata sau ai nevoie de conformitate juridica de zi cu zi, livram solutii clare, aplicabile si personalizate.',
       },
       {
-        eyebrow: 'Clienți',
-        title: 'Reprezentare pentru Companii și Grupuri Antreprenoriale',
-        summary: 'Lucrăm cu societăți comerciale, grupuri de acționari și parteneri internaționali care au nevoie de claritate juridică în dispute cu miză ridicată.',
+        eyebrow: 'Clienti',
+        title: 'Reprezentare pentru companii si grupuri antreprenoriale',
+        summary: 'Lucram cu societati comerciale, grupuri de actionari si parteneri internationali care au nevoie de claritate juridica in dispute cu miza ridicata.',
       },
       {
         eyebrow: 'Litigii Comerciale',
-        title: 'Dispute Contractuale, Arbitraj și Recuperare de Creanțe',
-        summary: 'Experiență în litigii complexe: neexecutare contractuală, blocaje societare, arbitraj instituțional și recuperarea creanțelor cu risc de disipare a activelor.',
+        title: 'Dispute contractuale, arbitraj si recuperare de creante',
+        summary: 'Experienta in litigii complexe: neexecutare contractuala, blocaje societare, arbitraj institutional si recuperarea creantelor cu risc de disipare a activelor.',
       },
     ];
 

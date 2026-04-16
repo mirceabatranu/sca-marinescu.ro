@@ -72,10 +72,10 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       'SCA Marinescu este un site de prezentare concentrat pe litigii comerciale, arbitraj si dispute corporative, construit pentru viteza, indexare si claritate juridica in romana si engleza.',
     navigationLabel: 'Navigatie principala',
     navigation: [
-      { href: '/en/', label: 'Home' },
-      { href: '#about', label: 'About Us' },
-      { href: '#services', label: 'Practice Areas' },
-      { href: '#insights', label: 'Legal Blog' },
+      { href: '/', label: 'Acasa' },
+      { href: '#about', label: 'Despre Noi' },
+      { href: '#services', label: 'Arii de Practica' },
+      { href: '#insights', label: 'Articole Juridice' },
       { href: '#contact', label: 'Contact' },
     ],
     switch: {
@@ -268,10 +268,10 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       'SCA Marinescu is a static bilingual presentation website focused on commercial litigation, arbitration and corporate disputes in Romania, built for search visibility and fast crawling.',
     navigationLabel: 'Primary navigation',
     navigation: [
-      { href: '/', label: 'Acasa' },
-      { href: '#about', label: 'Despre Noi' },
-      { href: '#services', label: 'Arii de Practica' },
-      { href: '#insights', label: 'Articole Juridice' },
+      { href: '/en/', label: 'Home' },
+      { href: '#about', label: 'About Us' },
+      { href: '#services', label: 'Practice Areas' },
+      { href: '#insights', label: 'Legal Blog' },
       { href: '#contact', label: 'Contact' },
     ],
     switch: {
