@@ -430,6 +430,17 @@
       .hero { margin-top: 60px; height: calc(100vh - 60px); }
       .hero-main-title { font-size: clamp(1.3rem, 3.5vw, 2.2rem); }
     }
+
+    /* ── CAROUSEL — desktop: 70% wide, 15% free on each side ── */
+    @media (min-width: 721px) {
+      .hero-center {
+        width: 70vw;
+        max-width: 70vw;
+      }
+      .hero-carousel-bar {
+        width: 70vw;
+      }
+    }
   </style>
 </head>
 <body>
