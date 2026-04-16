@@ -310,7 +310,7 @@ a {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.9fr);
+  grid-template-columns: 1fr 1fr;
   align-items: stretch;
 }
 
@@ -444,16 +444,29 @@ h3 {
 .hero-panel {
   border-radius: 1.7rem;
   padding: 1.7rem;
-  background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(255, 249, 239, 0.88));
+  background: #0a0a0a;
+  color: #f7f2eb;
 }
 
 .panel-kicker {
   margin: 0 0 1rem;
-  color: var(--brand);
+  color: var(--accent);
   font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.hero-panel .panel-list span {
+  color: rgba(247, 242, 235, 0.72);
+}
+
+.hero-panel .panel-list li,
+.hero-panel .panel-list li:first-child {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.hero-panel .panel-list li:first-child {
+  border-top: 0;
 }
 
 .panel-list {
