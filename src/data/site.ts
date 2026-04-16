@@ -72,10 +72,10 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       'SCA Marinescu este un site de prezentare concentrat pe litigii comerciale, arbitraj si dispute corporative, construit pentru viteza, indexare si claritate juridica in romana si engleza.',
     navigationLabel: 'Navigatie principala',
     navigation: [
-      { href: '#services', label: 'Practica' },
-      { href: '#approach', label: 'Abordare' },
-      { href: '#matters', label: 'Mandate' },
-      { href: '#insights', label: 'Intrebari' },
+      { href: '/en/', label: 'Home' },
+      { href: '#about', label: 'About Us' },
+      { href: '#services', label: 'Practice Areas' },
+      { href: '#insights', label: 'Legal Blog' },
       { href: '#contact', label: 'Contact' },
     ],
     switch: {
@@ -89,17 +89,17 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       tagline: 'Commercial litigation and arbitration',
     },
     hero: {
-      eyebrow: 'Societatea Civila de Avocatura Marinescu',
-      title: 'Litigii comerciale pregatite pentru instanta, arbitraj si analiza riguroasa.',
+      eyebrow: 'SCA Marinescu | Consiliere Juridica Experta & Reprezentare Dedicata in Romania',
+      title: 'Protejam interesele afacerii si ale persoanei tale cu solutii juridice strategice, orientate spre rezultate.',
       summary:
-        'Acest website functioneaza ca pagina de referinta pentru companii, grupuri antreprenoriale si parteneri internationali care cauta asistenta in dispute comerciale, conflicte intre actionari, executare, recuperari complexe si litigii cu miza ridicata.',
+        'La SCA Marinescu, nu ne limitam la a naviga legea — oferim strategii proactive pentru a-ti securiza viitorul. Ca Societate Civila de Avocatura de prim rang, echipa noastra este specializata in drept comercial, litigii civile si consultanta juridica completa pentru companii si persoane fizice. Indiferent daca inchei o fuziune complexa, te confrunti cu un litigiu de miza ridicata sau ai nevoie de conformitate juridica zilnica, oferim solutii clare, aplicabile si personalizate.',
       primaryCta: {
-        href: 'mailto:contact@sca-marinescu.ro?subject=Solicitare%20litigiu%20comercial',
-        label: 'Solicita o discutie initiala',
+        href: 'mailto:contact@sca-marinescu.ro?subject=Programare%20Consultatie',
+        label: 'Programeaza o consultatie',
       },
       secondaryCta: {
         href: '#services',
-        label: 'Vezi ariile de practica',
+        label: 'Vorbeste cu un avocat',
       },
       panelLabel: 'Indicatori de pozitionare',
       panelKicker: 'Pozitionare',
@@ -268,10 +268,10 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       'SCA Marinescu is a static bilingual presentation website focused on commercial litigation, arbitration and corporate disputes in Romania, built for search visibility and fast crawling.',
     navigationLabel: 'Primary navigation',
     navigation: [
-      { href: '#services', label: 'Practice' },
-      { href: '#approach', label: 'Approach' },
-      { href: '#matters', label: 'Mandates' },
-      { href: '#insights', label: 'Questions' },
+      { href: '/', label: 'Acasa' },
+      { href: '#about', label: 'Despre Noi' },
+      { href: '#services', label: 'Arii de Practica' },
+      { href: '#insights', label: 'Articole Juridice' },
       { href: '#contact', label: 'Contact' },
     ],
     switch: {
@@ -285,17 +285,17 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       tagline: 'Commercial litigation and arbitration',
     },
     hero: {
-      eyebrow: 'Societatea Civila de Avocatura Marinescu',
-      title: 'Commercial litigation in Romania, prepared for court, arbitration and complex business disputes.',
+      eyebrow: 'SCA Marinescu | Expert Legal Counsel & Dedicated Advocacy in Romania',
+      title: 'Protecting your business and personal interests with strategic, results-driven legal solutions.',
       summary:
-        'This website is designed as a source-of-truth page for companies, investors and foreign counsel looking for a Romanian law firm profile focused on commercial litigation, shareholder disputes, enforcement and contentious insolvency matters.',
+        'At SCA Marinescu, we do more than just navigate the law; we provide proactive strategies to secure your future. As a premier Societate Civilă de Avocați, our team specializes in corporate law, civil litigation, and comprehensive legal consulting for both businesses and individuals. Whether you are closing a complex merger, facing a high-stakes dispute, or needing day-to-day legal compliance, we deliver clear, actionable, and personalized solutions.',
       primaryCta: {
-        href: 'mailto:contact@sca-marinescu.ro?subject=Commercial%20litigation%20inquiry',
-        label: 'Request an initial discussion',
+        href: 'mailto:contact@sca-marinescu.ro?subject=Schedule%20a%20Consultation',
+        label: 'Schedule a Consultation',
       },
       secondaryCta: {
         href: '#services',
-        label: 'View practice areas',
+        label: 'Speak with an Attorney',
       },
       panelLabel: 'Positioning signals',
       panelKicker: 'Positioning',
