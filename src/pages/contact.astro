@@ -24,7 +24,7 @@
       --gray: #6B6860;
       --gray-light: #9A9590;
       --line: rgba(201, 165, 90, 0.14);
-      --nav-h: 90px;
+      --nav-h: 107px;
     }
 
     html, body { min-height: 100%; overflow-x: hidden; }
@@ -61,7 +61,7 @@
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .logo-image { display: block; height: 58px; width: auto; }
+    .logo-image { display: block; height: 75px; width: auto; }
 
     .nav-right {
       display: flex;
@@ -171,24 +171,26 @@
     /* ── CONTACT PAGE ── */
     .contact-page { padding-top: var(--nav-h); display: flex; flex-direction: column; min-height: 100vh; }
 
-    .page-header { padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--line); }
-
     .eyebrow {
       font-family: 'Helvetica Neue', sans-serif;
       font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 0.75rem;
     }
 
-    .page-header h1 {
+    .contact-title {
       font-family: 'Georgia', serif;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 400; line-height: 1.1; color: var(--off-white);
     }
 
     .page-lead {
-      margin-top: 0.75rem;
+      margin-top: 0.6rem; margin-bottom: 2rem;
       font-family: 'Helvetica Neue', sans-serif;
       font-size: 0.95rem; color: var(--gray-light); line-height: 1.7;
+    }
+
+    .form-col-divider {
+      border: none; border-top: 1px solid var(--line); margin-bottom: 2rem;
     }
 
     /* Info Strip */
@@ -338,9 +340,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      :root { --nav-h: 78px; }
+      :root { --nav-h: 93px; }
       nav#mainNav { padding: 0.9rem 1.2rem; min-height: var(--nav-h); }
-      .logo-image { height: 49px; }
+      .logo-image { height: 64px; }
     }
 
     @media (max-width: 900px) {
@@ -359,7 +361,7 @@
     }
 
     @media (max-width: 720px) {
-      .logo-image { height: 43px; }
+      .logo-image { height: 56px; }
       .menu-btn-label { display: none; }
       .shell { padding: 0 1.2rem; }
       .form-col { padding: 2rem 1.5rem; }
@@ -370,9 +372,9 @@
     }
 
     @media (max-height: 700px) and (orientation: landscape) {
-      :root { --nav-h: 60px; }
+      :root { --nav-h: 71px; }
       nav#mainNav { min-height: var(--nav-h); padding-top: 0.6rem; padding-bottom: 0.6rem; }
-      .logo-image { height: 40px; }
+      .logo-image { height: 52px; }
     }
   </style>
 </head>
@@ -416,14 +418,6 @@
   </nav>
 
   <main class="contact-page">
-
-    <section class="page-header">
-      <div class="shell">
-        <p class="eyebrow">SCA Marinescu și Asociații</p>
-        <h1>Contact</h1>
-        <p class="page-lead">Suntem la dispoziția dumneavoastră pentru consultații și orice alte informații.</p>
-      </div>
-    </section>
 
     <div class="info-strip">
       <div class="info-card">
@@ -469,6 +463,10 @@
       </div>
 
       <div class="form-col">
+        <p class="eyebrow">SCA Marinescu și Asociații</p>
+        <h1 class="contact-title">Contact</h1>
+        <p class="page-lead">Suntem la dispoziția dumneavoastră pentru consultații și orice alte informații.</p>
+        <hr class="form-col-divider" />
         <h2 class="form-title">Trimiteți-ne un mesaj</h2>
 
         <form id="contactForm" novalidate>
