@@ -20,9 +20,12 @@
       --off-white: #F0EBE0;
       --gray: #6B6860;
       --gray-light: #9A9590;
+      --nav-h: 84px; /* 52px logo + 2×16px padding */
     }
 
-    html, body { height: 100%; }
+    html, body { height: 100%; overflow-x: hidden; }
+
+    html { scroll-padding-top: var(--nav-h); }
 
     body {
       font-family: 'Georgia', serif;
@@ -38,7 +41,7 @@
       display: flex;
       align-items: center;
       padding: 1rem 2.5rem;
-      min-height: 80px;
+      min-height: var(--nav-h);
       background: var(--dark-nav);
       border-bottom: 1px solid rgba(201,165,90,0.12);
     }
@@ -227,8 +230,9 @@
 
     /* ── HERO — full-width, centered ── */
     .hero {
-      height: calc(100vh - 80px);
-      margin-top: 80px;
+      height: calc(100vh - var(--nav-h));
+      height: calc(100svh - var(--nav-h)); /* iOS Safari: stable viewport height */
+      margin-top: var(--nav-h);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -379,9 +383,10 @@
     }
 
     @media (max-width: 1024px) {
-      nav { padding: 0.9rem 1.2rem; min-height: 70px; }
+      :root { --nav-h: 73px; } /* 44px logo + 2×0.9rem padding ≈ 73px */
+
+      nav { padding: 0.9rem 1.2rem; min-height: var(--nav-h); }
       .logo-image { height: 44px; }
-      .hero { margin-top: 70px; height: calc(100vh - 70px); }
     }
 
     @media (max-width: 720px) {
@@ -394,10 +399,12 @@
     }
 
     @media (max-height: 700px) and (orientation: landscape) {
-      nav { min-height: 60px; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+      :root { --nav-h: 60px; } /* 36px logo + 2×0.6rem padding = ~55px, min-height governs */
+
+      nav { min-height: var(--nav-h); padding-top: 0.6rem; padding-bottom: 0.6rem; }
       .logo-image { height: 36px; }
-      .hero { margin-top: 60px; height: calc(100vh - 60px); }
       .hero-main-title { font-size: clamp(1.3rem, 3.5vw, 2.2rem); }
+      .hero-summary { display: none; }
     }
   </style>
 </head>
