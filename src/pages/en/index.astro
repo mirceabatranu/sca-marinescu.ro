@@ -406,6 +406,146 @@
       .hero-main-title { font-size: clamp(1.3rem, 3.5vw, 2.2rem); }
       .hero-summary { display: none; }
     }
+
+    /* ── HOMEPAGE SECTIONS ── */
+    .home-section {
+      padding: 5rem clamp(1.5rem, 8vw, 7rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--off-white);
+      line-height: 1.2;
+      margin: 0 0 2.5rem;
+    }
+
+    .section-divider {
+      width: 100%;
+      border: none;
+      border-top: 1px solid rgba(201,165,90,0.12);
+      margin: 0;
+    }
+
+    .practice-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .practice-card {
+      border: 1px solid rgba(201,165,90,0.15);
+      padding: 2rem 1.8rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .practice-card:hover {
+      border-color: rgba(201,165,90,0.4);
+      background: rgba(201,165,90,0.04);
+    }
+
+    .practice-card-number {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .practice-card h3 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--off-white);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .practice-card p {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.72;
+      color: rgba(240,235,224,0.6);
+    }
+
+    .section-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.2s, color 0.2s;
+    }
+
+    .section-cta:hover { color: var(--off-white); gap: 1rem; }
+    .section-cta:hover svg { transform: translateX(3px); }
+    .section-cta svg { flex-shrink: 0; transition: transform 0.2s; }
+
+    .about-text p {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: rgba(240,235,224,0.72);
+      margin-bottom: 1.2rem;
+      max-width: 720px;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 2rem; }
+
+    .site-footer {
+      border-top: 1px solid rgba(201,165,90,0.12);
+      padding: 2rem clamp(1.5rem, 8vw, 7rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: rgba(240,235,224,0.38);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(240,235,224,0.38);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 720px) {
+      .practice-cards { grid-template-columns: 1fr; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -426,11 +566,11 @@
     </div>
 
     <nav class="overlay-nav">
-      <a href="/en/" onclick="closeOverlay()">Home</a>
-      <a href="#about" onclick="closeOverlay()">About Us</a>
-      <a href="#services" onclick="closeOverlay()">Practice Areas</a>
-      <a href="#insights" onclick="closeOverlay()">Legal Blog</a>
-      <a href="#contact" onclick="closeOverlay()">Contact</a>
+      <a href="/en/">Home</a>
+      <a href="/en/about">About Us</a>
+      <a href="/en/practice-areas">Practice Areas</a>
+      <a href="/en/blog">Legal Blog</a>
+      <a href="/en/contact">Contact</a>
     </nav>
 
     <footer class="overlay-footer">
@@ -516,6 +656,71 @@
     </div>
 
   </div>
+
+  <hr class="section-divider" />
+
+  <!-- PRACTICE AREAS -->
+  <section class="home-section" id="practice-areas">
+    <p class="section-eyebrow">Our expertise</p>
+    <h2 class="section-title">Areas of Competence &amp; Practice</h2>
+    <div class="practice-cards">
+      <div class="practice-card">
+        <p class="practice-card-number">01</p>
+        <h3>Public &amp; Administrative Law</h3>
+        <p>Advisory services in dealings with public authorities, administrative litigation, public procurement and disputes against the state.</p>
+      </div>
+      <div class="practice-card">
+        <p class="practice-card-number">02</p>
+        <h3>Civil &amp; Commercial Law</h3>
+        <p>Contracts, civil litigation, mergers and acquisitions, corporate law and debt recovery.</p>
+      </div>
+      <div class="practice-card">
+        <p class="practice-card-number">03</p>
+        <h3>Business Criminal Law</h3>
+        <p>Assistance in economic crime cases, fraud, tax evasion and criminal liability of directors.</p>
+      </div>
+      <div class="practice-card">
+        <p class="practice-card-number">04</p>
+        <h3>Regulation &amp; Legislative Process</h3>
+        <p>Legislative monitoring, representation before regulatory authorities and specialised legal opinions.</p>
+      </div>
+    </div>
+    <a class="section-cta" href="/en/practice-areas">
+      All practice areas
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 7H19M13 1L19 7L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ABOUT US -->
+  <section class="home-section" id="about">
+    <p class="section-eyebrow">Who we are</p>
+    <h2 class="section-title">SCA Marinescu &amp; Associates</h2>
+    <div class="about-text">
+      <p>Founded in 2006 by attorney Flavius-George Marinescu, Societatea Civilă de Avocatură Marinescu și Asociații is a specialised law firm built on the principles of legal rigour, professional integrity and a firm focus on results. With more than two decades of experience in commercial law and complex litigation, our team acts as a strategic partner to our clients.</p>
+      <p>We work with companies, shareholder groups, entrepreneurs and individuals, providing clear legal advice and dedicated representation before courts, authorities and arbitral tribunals. Every matter is approached with analytical depth, practical perspective and a commitment to delivering real, actionable and sustainable solutions.</p>
+      <a class="section-cta" href="/en/about">
+        About our team &amp; values
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7H19M13 1L19 7L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-copy">&copy; 2026 Societatea Civilă de Avocatură Marinescu &amp; Asociații</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/en/about">About Us</a>
+      <a href="/en/practice-areas">Practice Areas</a>
+      <a href="/en/contact">Contact</a>
+      <a href="/">Română</a>
+    </nav>
+  </footer>
 
   <script>
     // ── Menu overlay ──
