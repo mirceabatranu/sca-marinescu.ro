@@ -2,7 +2,7 @@ export const companyProfile = {
   name: 'SCA Marinescu',
   legalName: 'Societatea Civila de Avocatura Marinescu',
   siteUrl: 'https://sca-marinescu.ro',
-  email: 'contact@sca-marinescu.ro',
+  email: 'office@sca-marinescu.ro',
   city: 'Bucharest',
   country: 'Romania',
   countryCode: 'RO',
@@ -94,7 +94,7 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       summary:
         'La SCA Marinescu, nu ne limitam la a naviga legea — oferim strategii proactive pentru a-ti securiza viitorul. Ca Societate Civila de Avocatura de prim rang, echipa noastra este specializata in drept comercial, litigii civile si consultanta juridica completa pentru companii si persoane fizice. Indiferent daca inchei o fuziune complexa, te confrunti cu un litigiu de miza ridicata sau ai nevoie de conformitate juridica zilnica, oferim solutii clare, aplicabile si personalizate.',
       primaryCta: {
-        href: 'mailto:contact@sca-marinescu.ro?subject=Programare%20Consultatie',
+        href: 'mailto:office@sca-marinescu.ro?subject=Programare%20Consultatie',
         label: 'Programeaza o consultatie',
       },
       secondaryCta: {
@@ -246,7 +246,7 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       languagesLabel: 'Limbi de lucru',
       languages: 'Romana si engleza',
       cta: {
-        href: 'mailto:contact@sca-marinescu.ro?subject=Evaluare%20initiala%20disputa',
+        href: 'mailto:office@sca-marinescu.ro?subject=Evaluare%20initiala%20disputa',
         label: 'Trimite un email',
       },
     },
@@ -290,7 +290,7 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       summary:
         'At SCA Marinescu, we do more than just navigate the law; we provide proactive strategies to secure your future. As a premier Societate Civilă de Avocați, our team specializes in corporate law, civil litigation, and comprehensive legal consulting for both businesses and individuals. Whether you are closing a complex merger, facing a high-stakes dispute, or needing day-to-day legal compliance, we deliver clear, actionable, and personalized solutions.',
       primaryCta: {
-        href: 'mailto:contact@sca-marinescu.ro?subject=Schedule%20a%20Consultation',
+        href: 'mailto:office@sca-marinescu.ro?subject=Schedule%20a%20Consultation',
         label: 'Schedule a Consultation',
       },
       secondaryCta: {
@@ -442,7 +442,7 @@ export const siteContent: Record<'ro' | 'en', SiteContent> = {
       languagesLabel: 'Working languages',
       languages: 'Romanian and English',
       cta: {
-        href: 'mailto:contact@sca-marinescu.ro?subject=Commercial%20litigation%20inquiry',
+        href: 'mailto:office@sca-marinescu.ro?subject=Commercial%20litigation%20inquiry',
         label: 'Send an email',
       },
     },
