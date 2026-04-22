@@ -24,7 +24,7 @@
       --gray: #6B6860;
       --gray-light: #9A9590;
       --line: rgba(201, 165, 90, 0.14);
-      --nav-h: 107px;
+      --nav-h: 130px;
     }
 
     html, body { min-height: 100%; overflow-x: hidden; }
@@ -61,7 +61,7 @@
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .logo-image { display: block; height: 75px; width: auto; }
+    .logo-image { display: block; height: 98px; width: auto; }
 
     .nav-right {
       display: flex;
@@ -237,8 +237,10 @@
       min-height: 500px;
     }
     .map-col iframe {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+      position: absolute;
+      width: 50%; height: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
       border: 0; display: block;
     }
 
@@ -340,9 +342,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      :root { --nav-h: 93px; }
+      :root { --nav-h: 112px; }
       nav#mainNav { padding: 0.9rem 1.2rem; min-height: var(--nav-h); }
-      .logo-image { height: 64px; }
+      .logo-image { height: 83px; }
     }
 
     @media (max-width: 900px) {
@@ -361,7 +363,7 @@
     }
 
     @media (max-width: 720px) {
-      .logo-image { height: 56px; }
+      .logo-image { height: 73px; }
       .menu-btn-label { display: none; }
       .shell { padding: 0 1.2rem; }
       .form-col { padding: 2rem 1.5rem; }
@@ -372,9 +374,9 @@
     }
 
     @media (max-height: 700px) and (orientation: landscape) {
-      :root { --nav-h: 71px; }
+      :root { --nav-h: 87px; }
       nav#mainNav { min-height: var(--nav-h); padding-top: 0.6rem; padding-bottom: 0.6rem; }
-      .logo-image { height: 52px; }
+      .logo-image { height: 68px; }
     }
   </style>
 </head>
