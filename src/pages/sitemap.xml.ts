@@ -1,6 +1,17 @@
 import type { APIRoute } from 'astro';
 
-const entries = ['/', '/en/'];
+const entries = [
+  '/',
+  '/en/',
+  '/contact',
+  '/en/contact',
+  '/despre-noi',
+  '/en/about',
+  '/arii-de-practica',
+  '/en/practice-areas',
+  '/blog',
+  '/en/blog',
+];
 
 export const GET: APIRoute = ({ site }) => {
   const baseUrl = site ?? new URL('https://sca-marinescu.ro');
